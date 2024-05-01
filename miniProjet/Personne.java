@@ -1,3 +1,5 @@
+package miniProjet;
+
 public abstract class Personne {
 
     // 1- Attributs protégés
