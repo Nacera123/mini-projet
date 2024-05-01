@@ -1,5 +1,10 @@
 package miniProjet;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 import java.util.Vector;
 
 public class Commerciale {
@@ -24,26 +29,65 @@ public class Commerciale {
 
     // 2-c - ajouter article
     public void AjouterArticle(Article a) {
+
         this.articles.add(a);
     }
 
     // 2-d - anuler article
     public void SupprimerArticle(Article a) {
-        this.articles.remove(a);
+
+        boolean ok = this.articles.remove(a);
+        if (ok) {
+            System.out.println("Article " + a.getDesignation() + " a été supprimée");
+        } else {
+
+            System.out.println("Article " + a.getDesignation() + " n'est pas existant dans le vecteur");
+        }
+
     }
 
     // 2-e - ajouter client
     public void AjouterClient(Client c) {
+
         this.clients.add(c);
     }
 
     // 2-f - anuler article
     public void SupprimerClient(Client c) {
-        this.clients.remove(c);
+        boolean ok = this.clients.remove(c);
+
+        if (ok) {
+            System.out.println("Le client " + c.getIdent() + " a été supprimée");
+        } else {
+
+            System.out.println("Article " + c.getIdent() + " n'est pas existant dans le vecteur");
+        }
+
+    }
+
+    // Methode pour afficher les article
+    public void afficheArticle() {
+        for (Article article : articles) {
+            article.Affiche();
+        }
+    }
+
+    // Methode pour afficher les article
+    public void afficheClientList(List<Client> clients) {
+        for (Client client : clients) {
+            client.Affiche();
+        }
+    }
+
+    // Methode pour afficher les article
+    public void afficheClient() {
+        for (Client client : clients) {
+            client.Affiche();
+        }
     }
 
     // 3- Ajout de la Main
-    public static void main(String[] args) {
+    public static void main(String[] args) throws ParseException {
 
         Commerciale commerciale = new Commerciale();
         Article article1 = new Article(1, "Robinet SOPAL", 120, 50);
@@ -59,14 +103,45 @@ public class Commerciale {
         commerciale.AjouterArticle(article4);
         commerciale.AjouterArticle(article5);
 
-        // affichage du vecteur avant la suppression
-        article1.Affiche();
-        article2.Affiche();
-        article3.Affiche();
-        article4.Affiche();
-        article5.Affiche();
+        System.out.println("---Avant la suppression---");
+        commerciale.afficheArticle();
 
         // suppression article
+        System.out.println("Démarrage de la suppression : ");
+        commerciale.SupprimerArticle(article3);
+        commerciale.afficheArticle();
+
+        // ajout client
+        Client client1 = new Client(1, "zf-123", "125, rue des codeurs", 12500);
+        Client client2 = new Client(2, "zf-456", "125, rue des testeurs", 15500);
+
+        List<Client> clientsList = new ArrayList<>();
+        clientsList.addAll(List.of(client1, client2));
+
+        for (Client client : clientsList) {
+            commerciale.AjouterClient(client);
+        }
+
+        System.out.println(" Liste des clients avant suppression ");
+        commerciale.afficheClientList(clientsList);
+
+        // supprimer un client
+        System.out.println("Démarrage de la suppression : ");
+        commerciale.SupprimerClient(client2);
+        commerciale.afficheClient();
+
+        // passer une commande
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
+        try {
+            Date date1 = dateFormat.parse("2024-05-01");
+            System.out.println(date1);
+            Commande commande1 = new Commande(123, date1, client1);
+            commande1.Affiche();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
 
     }
 

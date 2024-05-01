@@ -56,7 +56,7 @@ public class Commande {
     public void Affiche() {
         System.out.println("Le numéro de commade : " + numcomm);
         System.out.println("La date de commade : " + datecomm);
-        System.out.println("Le client a avoir passé cette commande  : " + client);
+        System.out.println("Le client a avoir passé cette commande  : " + client.ident);
     }
 
 }

@@ -24,6 +24,7 @@ public class Client extends Personne {
     // 5- Méthode pour afficher les informations de la personne
     @Override
     public void Affiche() {
+        super.Affiche();
         System.out.println("chiffre d'affaire : " + chiffreaffaire);
     }
 }
