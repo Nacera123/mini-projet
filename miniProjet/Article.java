@@ -62,9 +62,12 @@ public class Article {
 
     // 6- methode void qui affiche toutes les informations
     public void Affiche() {
-        System.out.println("La reference de l'article : " + refrence);
-        System.out.println("Le nom de l'article : " + designation);
-        System.out.println("Le prix de l'article : " + prixunitaire);
-        System.out.println("il y'a : " + quantitestock + "  de l'article " + designation + " en stock");
+        System.out
+                .println(refrence + "  " + designation + "  Prix : " + prixunitaire + " Quantité :  " + quantitestock);
+        // System.out.println("La reference de l'article : " + refrence);
+        // System.out.println("Le nom de l'article : " + designation);
+        // System.out.println("Le prix de l'article : " + prixunitaire);
+        // System.out.println("il y'a : " + quantitestock + " de l'article " +
+        // designation + " en stock");
     }
 }

@@ -66,6 +66,8 @@ public class Commerciale {
         article4.Affiche();
         article5.Affiche();
 
+        // suppression article
+
     }
 
 }
